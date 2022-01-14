@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Calcul IMC
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,47 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Calcul IMC</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-label>
+          Indiquer votre poids :
+        </ion-label>
+
+        <ion-input
+        [(ngModel)]="poids">
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          Indiquer votre taille :
+        </ion-label>
+      <ion-input
+      [(ngModel)]="taille">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-row>
+  <ion-button color="success" (click)="onCalculIMC()">Calculer votre IMC</ion-button>
+  </ion-row>
+
+<!-- AFFICHER IMC -->
+  <ion-card>
+    <ion-card-header >
+      <ion-card-title
+        [color]="getColor()">Votre IMC est : {{ imc }}</ion-card-title>
+      <ion-card-title
+        [color]="getColor()">Votre tranche est : {{ etat }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Vous devriez perdre {{ pert }} kg pour atteindre l'imc iédal.
+    </ion-card-content>
+  </ion-card>
 </ion-content>
